@@ -1,0 +1,377 @@
+## CEH Ports
+
+0 to 1023 – well known ports assigned to common protocols and services
+1024 to 49151 – registered ports assigned by ICANN to a specific service// ICANN(Internet Corporation for Assigned Names and
+		Numbers)
+49152 to 65535 – dynamic (private, high) ports range from 49152 to 65535. Can be used by any service on an ad-hoc basis. Ports
+		are assigned when a session is established, and released when the session ends.
+
+FTP - 20,21
+SSH/SCP/SFTP - 22 // SCP(Secure Copy Protocol) -> The SCP is a network protocol, based on the BSD RCP protocol, which supports
+	file transfers between hosts on a network. SCP uses Secure Shell (SSH) for data transfer and uses the same mechanisms 
+	for authentication, thereby ensuring the authenticity and confidentiality of the data in transit.
+    // SFTP (Secure File Transfer Protocol) is a secure version of File Transfer Protocol (FTP), which facilitates data access
+    and data transfer over a Secure Shell (SSH) data stream. It is part of the SSH Protocol. This term is also known as SSH File
+    Transfer Protocol
+    Question ->Based on the below log, which of the following sentences are true?
+               Mar 1, 2016, 7:33:28 AM 10.240.250.23 – 54373 10.249.253.15 – 22 tcp_ip
+    Answer   ->Application is SSH and 10.240.250.23 is the client and 10.249.253.15 is the server
+
+Telnet - 23 
+
+SMTP - 25 TCP // Use to send emails
+
+TACACS/TACACS+ - 49 // TACACS+, stands for Terminal Access Controller Access Control Server, is a security protocol used in AAA
+    framework to provide centralised authentication for users who want to gain access to the network.
+
+DNS - 53 (TCP/UDP) //
+    Question -> DNS cache snooping is a process of determining if the specified resource address is present in the DNS cache
+    records. It may be useful during the examination of the network to determine what software update resources are used, thus
+    discovering what software is installed. What command is used to determine if the entry is present in DNS cache?
+    Answer -> nslookup -norecursive update.antivirus.com
+
+DHCP Listens on UDP port - 67
+DHCPdiscovery msgs r always send from UDP port - 68
+DHCPv6 UDP port for clients - 546
+DHCPv6 UDP port for servers - 547
+    TFTP - 69 //Trivial File Transfer Protocol (TFTP) is an Internet software utility for transferring files that is simpler to
+    use than the File Transfer Protocol (FTP) but less capable. It is used where user authentication and directory visibility 
+    are not required.
+    Question -> An NMAP scan of a server shows port 69 is open. What risk could this pose?
+    Answer   -> Unathenticated access
+
+HTTP - 80
+HTTPS - 443
+kerberos - 88 // Kerberos is a computer-network authentication protocol that works on the basis of tickets to allow nodes 
+	communicating over a non-secure network to prove their identity to one another in a secure manner.
+POP3 - 110 TCP // POP3 (Post Office Protocol 3) is the most recent version of a standard protocol for receiving e-mail. POP3 is
+	a client/server protocol in which e-mail is received and held for you by your Internet server.
+NTP - 123 UDP // Network Time Protocol is a networking protocol for clock synchronization between computer systems over
+    	packet-switched, variable-latency data networks.
+IMAP4 - 143 TCP  // (Internet Message Access Protocol) is a standard email protocol that stores email messages on a mail server,
+	but allows the end user to view and manipulate the messages as though they were stored locally on the end user's
+	computing device(s).
+
+NetBIOS - 135-139 // it is an old naming system and right now in naming system we r using DNS
+Microsoft RPC endpoints Mapper - 135 TCP/UDP
+NBNS - 137 UDP (used for NetBIOS)
+SMB over IP - 139,445 TCP
+    Question -> You have successfully gained access to your client's internal network and successfully comprised a Linux server
+    which is part of the internal IP network. You want to know which Microsoft Windows workstations have file sharing enabled.
+    Which port would you see listening on these Windows machines in the network?
+    Answer -> 445
+    
+    Question -> Eve is spending her day scanning the library computers. She notices that Alice is using a computer whose port 
+    445 is active and listening. Eve uses the ENUM tool to enumerate Alice machine. From the command prompt, she types the
+    following command. What is Eve trying to do?
+    Answer -> Eve is trying to carry out a password crack for user Administrator
+    
+    Question -> Null sessions are un-authenticated connections (not using a username or password.) to an NT or 2000 system.
+                Which TCP and UDP ports must you filter to check null sessions on your network?
+    Answer -> 139 and 445
+
+SNMP - 161 UDP // SNMP is a network management protocol that is usually set up to use UDP instead of TCP packets
+SNMP Trap(Asynchronous) - 162 TCP/UDP
+LDAP - 389 TCP/UDP // 
+    Question -> An LDAP directory can be used to store information similar to a SQL database. LDAP uses a ____ database 
+    structure instead of SQL’s ______ structure. Because of this, LDAP has difficulty representing many-to-one relationships.
+    Answer   -> Hierarchical, Relational
+LDAP(SSL/TLS) - 636
+
+IPsec(for VPN and IKE) - open port 500 UDP(to work through firewall) and 50, 51 ports on both inbound and outbound filters
+SYSLOG - 514 //specifically designed for transporting event messages, needed in order to send log messages to a log analysis 
+	tool that resides behind a firewall
+    Question -> You are a Network Security Officer. You have two machines. The first machine (192.168.0.99) has snort installed,
+    and the second machine (192.168.0.150) has kiwi syslog installed. You perform a SYN scan in your network, and you notice
+    that kiwi syslog is not receiving the alert message from snort. You decide to run Wireshark in the snort machine to
+    check if the messages are going to the kiwi syslog machine.
+    What Wireshark filter will show the connections from the snort machine to kiwi syslog machine?
+    Answer -> tcp.dstport==514&&ip.dst==192.168.0.150
+    
+    Syslog is a standard for logging program msgs. It allows seperation of the software that generate msgs from the system that 
+    stores them and the softwares that reports and analyzes them. It also provide devices, which woul otherwise be unable to
+    communicate a means to notify administrators of problems of performance.
+
+Remote windows shutdown - 53001
+RAT - 1095-1098
+Micrososft SQL server - 1433 TCP
+L2TP - 1701 UDP // Layer Two Tunneling Protocol (L2TP) is an extension of the Point-to-Point Tunneling Protocol (PPTP) used
+    by an Internet service provider (ISP) to enable the operation of a virtual private network (VPN) over the Internet.
+PPTP - 1723
+SSDP - 1900 UDP
+NFS - 2049
+Remote Desktop Services/ Terminal Services - 3389
+IRC - 6667
+netbus - 17300 // Netbus tool(for remote adminsitration and spy tool)
+hackers paradise - 456
+masters paradise - 31
+Global Catlog Service - 3268 TCP/UDP
+
+Point-to-Point Protocol (PPP) is a data link layer (layer 2) communications protocol between two routers directly without any
+host or any other networking in between. It can provide connection authentication, transmission encryption, and compression.
+In PPP the layout of the PPP port parameters changes considerably according to the used lower layer port type such as
+PPP over SYNC LOWPO -> 1
+PPP over Frame-Relay LOWPO -> 101
+PPP over ISDN LOWPO -> 17
+PPP over EIR(S-link) LOWPO -> 200
+PPP over EIR(P-link) LOWPO -> 200
+LOWPO is Identifier of the lower level Abilis CPX port (1 - 999, NONE)
+Sets the lower level port; it can be any P-LINK or an S-LINK port.
+The value "NONE" makes the PPP port unusable.
+
+WMI - // Windows Management Instrumentation is a set of specifications from Microsoft for consolidating the management of 
+devices and applications in a network from Windows computing systems.
+// This issue can occur when the default configuration of the Windows Firewall program blocks incoming network traffic for
+Windows Management Instrumentation (WMI) connection. For the connection to succeed, the remote computer must permit incoming
+network traffic on TCP ports 135, 445, and additional dynamically-assigned ports, typically in the range of 1024 to 1034.
+
+
+## Firewall ->
+Firewalking is a technique developed by Mike Schiffman and David Goldsmith that utilizes traceroute techniques and TTL values
+to analyze IP packet responses in order to determine gateway ACL (Access Control List) filters and map networks. It is an
+active reconnaissance network security analysis technique that attempts to determine which layer 4 protocols a specific
+firewall will allow.
+
+Question -> An incident investigator asks to receive a copy of the event logs from all firewalls, proxy servers, and Intrusion
+Detection Systems (IDS) on the network of an organization that has experienced a possible breach of security. When the
+investigator attempts to correlate the information in all of the logs, the sequence of many of the logged events do not match
+up. What is the most likely cause?
+Answer -> The attacker altered of erase events from the logs
+
+Question -> Sam is working as s pen-tester in an organization in Houston. He performs penetration testing on IDS in order to
+find the different ways an attacker uses to evade the IDS. Sam sends a large amount of packets to the target IDS that generates
+alerts, which enable Sam to hide the real traffic. What type of method is Sam using to evade IDS?
+Answer -> False Positive Generation
+
+Question -> In 2007, this wireless security algorithm was rendered useless by capturing packets and discovering the passkey in
+a matter of seconds. This security flaw led to a network invasion of TJ Maxx and data theft through a technique known as
+wardriving. Which Algorithm is this referring to?
+Answer -> Wired Equivalent Privacy(WEP)
+
+Packet-Filtering Firewalls->
+As the most “basic” and oldest type of firewall architecture, packet-filtering firewalls basically create a checkpoint at a
+traffic router or switch. The firewall performs a simple check of the data packets coming through the router—inspecting
+information such as the destination and origination IP address, packet type, port number, and other surface-level 
+information without opening up the packet to inspect its contents.
+If the information packet doesn’t pass the inspection, it is dropped.
+The good thing about these firewalls is that they aren’t very resource-intensive. This means they don’t have a huge impact
+on system performance and are relatively simple. However, they’re also relatively easy to bypass compared to firewalls with
+more robust inspection capabilities.
+
+Question -> Which of the following types of firewall inspects only header information in network traffic?
+Answer -> Packet Filter
+
+Circuit-Level Gateways->
+As another simplistic firewall type that is meant to quickly and easily approve or deny traffic without consuming
+significant computing resources, circuit-level gateways work by verifying the transmission control protocol (TCP) handshake.
+This TCP handshake check is designed to make sure that the session the packet is from is legitimate.
+While extremely resource-efficient, these firewalls do not check the packet itself. So, if a packet held malware, but had
+the right TCP handshake, it would pass right through. This is why circuit-level gateways are not enough to protect your
+business by themselves.
+circuit level gateway works at layer 4-TCP(Transport Layer) of the OSI Model
+Circuit level Gateway The Firewall service redirects the necessary functions to the server, thus establishing a 
+communication path from the internal application to the Internet application. This eliminates the need for a specific
+gateway for each protocol, such as Network News Transfer Protocol (NNTP), SMTP, Telnet, or File Transfer Protocol (FTP). 
+Even if there are applications without built-in support for a proxy, or no knowledge of the firewall, firewall service still
+provides its benefits. Circuit-level filtering allows for sessions inspection, as opposed to connections or packets. A 
+session can include multiple connections, providing a number of important benefits for Windows-based clients running the
+Firewall Client software. First, like dynamic packet filtering, sessions are established only in response to a user request,
+improving the security. Second, circuit-level filtering provides built-in support for protocols with secondary connections,
+such as FTP and streaming media
+
+Question -> While conducting a penetration test, the tester determines that there is a firewall between the tester's machine
+and the target machine. The firewall is only monitoring TCP handshaking of packets at the session layer of the OSI model. Which
+type of firewall is the tester trying to traverse?
+Answer -> Circuit-level gateway firewall
+
+Stateful Inspection Firewalls->
+These firewalls combine both packet inspection technology and TCP handshake verification to create a level of protection
+greater than either of the previous two architectures could provide alone.
+However, these firewalls do put more of a strain on computing resources as well. This may slow down the transfer of
+legitimate packets compared to the other solutions.
+
+Question -> Which of the following types of firewalls ensures that the packets are part of the established session?
+Answer -> Stateful inspection firewall
+
+Question -> During a black box pen test you attempt to pass IRC traffic over port 80/TCP from a compromised web enabled host.
+The traffic gets blocked; however, outbound HTTP traffic is unimpeded.What type of firewall is inspecting outbound traffic?
+Answer 1-> Statefull 
+Answer 2-> Application  // these answers r conflicting
+// unimpeded meaning is not obstructed or hindered
+
+Proxy Firewalls (Application-Level Gateways)->
+Proxy firewalls operate at the application layer to filter incoming traffic between your network and the traffic source
+hence, the name “application-level gateway.” Rather than letting traffic connect directly, the proxy firewall first
+establishes a connection to the source of the traffic and inspects the incoming data packet.
+This check is similar to the stateful inspection firewall in that it looks at both the packet and at the TCP handshake
+protocol. However, proxy firewalls may also perform deep-layer packet inspections, checking the actual contents of the
+information packet to verify that it contains no malware.
+Once the check is complete, and the packet is approved to connect to the destination, the proxy sends it off. This creates
+an extra layer of separation between the “client” (the system where the packet originated) and the individual devices on
+your network—obscuring them to create additional anonymity and protection for your network.
+If there’s one drawback to proxy firewalls, it’s that they can create significant slowdown because of the extra steps in the
+data packet transferal process. 
+
+Question -> One advantage of an application-level firewall is the ability to
+Answer -> filter specific commands, such as http:post
+
+Question -> Which of the statements concerning proxy firewalls is correct?
+Answer -> Computer establish a connection with a proxy firewall which initiates a new network connection for the client
+- Udemy Practice test __2 Question 39
+
+Next-Generation Firewalls->
+Many of the most recently-released firewall products are being touted as “next-generation” architectures. However, there is
+not as much consensus on what makes a firewall truly next-gen.
+Some common features of next-generation firewall architectures include deep-packet inspection (checking the actual contents
+of the data packet), TCP handshake checks, and surface-level packet inspection. Next-generation firewalls may include other
+technologies as well, such as intrusion prevention systems (IPSs) that work to automatically stop attacks against your
+network.
+The issue is that there is no one definition of a next-generation firewall, so it’s important to verify what specific
+capabilities such firewalls have before investing in one.
+
+Stateless -> Stateless firewalls watch network traffic and restrict or block packets based on source and destination
+addresses or other static values. They’re not ‘aware’ of traffic patterns or data flows. A stateless firewall uses simple
+rule-sets that do not account for the possibility that a packet might be received by the firewall ‘pretending’ to be
+something you asked for.
+A stateless firewall filter, also known as an access control list (ACL), does not statefully inspect traffic. Instead, it
+evaluates packet contents statically and does not keep track of the state of network connections.
+
+Question -> During a penetration test, the tester conducts an ACK scan using NMAP against the external interface of the DMZ
+firewall. NMAP reports that port 80 is unfiltered. Based on this response, which type of packet inspection is the firewall
+conducting?
+Answer -> Stateless
+
+Question -> Firewalls are the software or hardware systems that are able to control and monitor the traffic coming in and out
+the target network based on pre-defined set of rules. Which of the following types of firewalls can protect against SQL
+injection attacks?
+Answer -> Web application firewall
+
+Question -> You are a security officer of a company. You had an alert from IDS that indicates that one PC on your Intranet is
+connected to a blacklisted IP address (C2 Server) on the Internet. The IP address was blacklisted just before the alert. You
+are staring an investigation to roughly analyze the severity of the situation. Which of the following is appropriate to analyze?
+Answer -> Internet Firewall/Proxy log
+
+Firewalls are categorized into two; namely hardware firewall and software firewall.
+Software Firewall is placed between the normal application and the networking components of the operating system
+
+Firewall check Application layer headers and Transport layer port numbers to prevent particular ports and applications from
+getting packets into an organization. 
+
+The first step in building a firewall is to perform a risk analysis to identify issues to be addressed.
+
+cmd -> Netsh firewall show config // this cmd is used to gain access to a Windows application server and needs to determine
+       the settings of the built-in Windows firewall
+
+In order to properly function dual-homed hardware is required by an IDS/IPS system or a proxy server.
+Dual-homed or dual-homing can refer to either an Ethernet device that has more than one network interface, for redundancy
+purposes, or in firewall technology, dual-homed is one of the firewall architectures, such as an IDS/IPS system, for
+implementing preventive security.
+
+Minimum number of network connections in a multi homed firewall is 3
+
+Rule based access control is used on a router or firewall to limit network activity.
+
+Defense-in-depth is a security strategy in which several protection layers are placed throughout an information system. It
+helps to prevent direct attacks against an information system and data because a break in one layer only leads the attacker
+to the next layer.
+
+Question -> What network security concept requires multiple layers of security controls to be placed throughout an IT
+infrastructure, which improves the security posture of an organization to defend against malicious attacks or potential
+vulnerabilities? What kind of Web application vulnerability likely exists in their software?
+Answer -> Defense in Depth
+
+Screened subnet - firewall architecture that is designed to host servers that offer public services
+
+Web application firewall -> - Udemy Practice test ___6 Question 61
+
+Network layer firewalls, also called packet filters, operate at a relatively low level of the TCP/IP protocol stack, not 
+allowing packets to pass through the firewall unless they match the established rule set. To prevent Web Application attacks
+an Application layer firewall would be required. 
+References: https://en.wikipedia.org/wiki/Firewall_(computing)#Network_layer_or_packet_filters
+
+While tuning security alerts the best approach is to tune to avoid False positives and False Negatives.
+
+FAR(False Acceptance Rate) is the most important in designing a bio-metric access system if it is essential that no one
+other than authorized individuals are admitted
+
+True Negative: An event when no attack has taken place and no detection is made.
+True Positive: A legitimate attack which triggers to produce an alarm.
+False Positive: An event signaling to produce an alarm when no attack has taken place 
+False Negative: When no alarm is raised when an attack has taken place.
+
+Question -> When analyzing the IDS logs, the system administrator noticed an alert was logged when the external router was
+accessed from the administrator's computer to update the router configuration. What type of an alert is this?
+Answer -> False Positive
+
+Question -> A network administrator received an administrative alert at 3:00 a.m. from the intrusion detection system. The
+alert was generated because a large number of packets were coming into the network over ports 20 and 21. During analysis,
+there were no signs of attack on the FTP servers. How should the administrator classify this situation?
+Answer -> False Positives
+
+https://drive.google.com/drive/u/1/my-drive ques 50
+
+IDS ->
+- Scanning the target network slowly prevents an IDS from alerting because the traffic may not be considered an anomaly. If
+ the sensor sees a huge amount of traffic being generated, it may cause the sensor to alert; therefore, it is best practice
+ to scan slowly.
+- IDS is designed to identify malicious attempts to penetrate systems 
+- Anomoly detection IDS detection technique detects the intrusion based on the fixed behavioral characteristics of the users
+ and components in a computer system // Any deviations from a regular/baseline behavior might trigger an alert or incident.
+ That would be termed as Anomaly Detection. Ex, sudden spike in Firewall traffic
+- IDS using signature based detection system compare the input strings against the signature to detect intrusion.
+- conceptual characteristic of an anomaly-based IDS over a signature-based IDS is can identify unknown attacks
+- Insertion attack IDS evasion techniques to bypass intrusion detection mechanisms. IT rely on Time-to-Live (TTL) fields of 
+  a TCP/IP packet  
+- IP Fragmentation or Session Splicing -> IDS defeating technique works by splitting a datagram (or packet) into multiple
+ fragments and the IDS will not spot the true nature of the fully assembled datagram. The datagram is not reassembled until
+ it reaches its final destination. It would be a processor-intensive task for IDS to reassemble all fragments itself, and on
+ a busy system the packet will slip through the IDS onto the network. 
+- IDS (Session Splicing) tool -> Whisker 
+- Unicode characters is an extremely common IDS evasion technique in the web world
+- Statistical anomoly is a Network intrusion detection technique
+- More sophisticated IDSs look for common shellcode signatures. But even these systems can be bypassed, by using polymorphic
+  shellcode. In this technique the virus writers encrypt the shellcode by XORing values over the shellcode, using loader code
+  to decrypt the shellcode and then executing the decrypted shellcode, It basically hides the true nature of the shellcode in
+  different disguises. 
+- Network based IDS r needed to monitor all network traffic on your local network for suspicious Activities and receive
+  notifications when an attack is occurring.
+- The main advantage that a network-based IDS/IPS system has over a host-based solution is they do not use host system
+ resources
+- Network based IDS r best applicable for large environments where critical assets on the network need extra scrutiny and is
+ ideal for observing sensitive network segments 
+- Passive IDS can monitor and alert on attacks, but cannot stop them
+
+Question -> You are monitoring the network of your organizations. You noticed that:
+1. There are huge outbound connections from your Internal Network to External IPs
+2. On further investigation, you see that the external IPs are blacklisted
+3. Some connections are accepted, and some are dropped
+4. You find that it is a CnC communication
+Which of the following solution will you suggest?
+Answer -> Update the latest signature of ur IDS/IPS. And clean the malware which r trying to communicate with the External
+Blacklist IP's
+
+Question -> The intrusion detection system at a software development company suddenly generates multiple alerts regarding
+attacks against the company's external webserver, VPN concentrator, and DNS servers. What should the security team do to
+determine which alerts to check first?
+Answer -> Investigate based on the potential effect of the incident
+
+Question -> You just set up a security system in your network. In what kind of system would you find the following string 
+of characters used as a rule within its configuration?
+alerttcp any any -> 192.168.100.0/24 21 (msg: ""FTP on the network!"";)
+Answer -> An Intrusion Detection System
+
+Question -> You need to deploy a new web-based software package for your organization. The package requires three separate 
+servers and needs to be available on the Internet. What is the recommended architecture in terms of server placement?
+Answer -> A web server facing the internet, an application server on the internal
+
+- Snort (tool for practicing IDS) ->
+Question -> You need a tool that can do network intrusion prevention and intrusion detection, function as a network sniffer, 
+and record network activity. What tool would you most likely select?
+Answer -> Snort
+
+- the three modes in which Snort can be configured to run ->
+	- Sniffer
+	- Packet logger
+	- Network IDS
+- Proper basic configuration of snort as a network intrusion detection system require to limit the packets captured to the 
+snort configuration file.
